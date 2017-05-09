@@ -19,7 +19,7 @@ public class MetroDAO {
 		List<Fermata> fermate = new ArrayList<Fermata>();
 
 		try {
-			Connection conn = DBConnect.getInstance().getConnection();
+			Connection conn = DBConnect.getConnection();
 			PreparedStatement st = conn.prepareStatement(sql);
 			ResultSet rs = st.executeQuery();
 
@@ -38,4 +38,5 @@ public class MetroDAO {
 
 		return fermate;
 	}
+	
 }

@@ -12,7 +12,9 @@ public class TestDAO {
 		
 		System.out.println("Lista fermate");
 		List<Fermata> fermate = metroDAO.getAllFermate();
-		System.out.println(fermate);
+		for(Fermata f : fermate)
+			System.out.println(f);
+		
 	}
 
 }

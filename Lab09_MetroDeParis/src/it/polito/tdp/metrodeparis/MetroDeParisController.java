@@ -6,6 +6,8 @@ package it.polito.tdp.metrodeparis;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import it.polito.tdp.metrodeparis.model.Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -13,6 +15,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 
 public class MetroDeParisController {
+	
+	private Model model;
 
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
@@ -31,6 +35,10 @@ public class MetroDeParisController {
 
     @FXML // fx:id="txtResult"
     private TextArea txtResult; // Value injected by FXMLLoader
+    
+    public void setModel(Model model){
+    	this.model=model;
+    }
 
     @FXML
     void doCalcolaPercorso(ActionEvent event) {

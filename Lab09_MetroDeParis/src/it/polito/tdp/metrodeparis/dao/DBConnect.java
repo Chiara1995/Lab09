@@ -4,27 +4,28 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import javax.sql.DataSource;
+
+import com.mchange.v2.c3p0.DataSources;
+
 public class DBConnect {
 
-	static private final String jdbcUrl = "jdbc:mysql://localhost/metroparis?user=root";
-	static private DBConnect instance = null;
+	private static final String jdbcUrl = "jdbc:mysql://localhost/metroparis?user=root";
+	private static DataSource ds=null;
 
-	private DBConnect() {
-		instance = this;
-	}
-
-	public static DBConnect getInstance() {
-		if (instance == null)
-			return new DBConnect();
-		else {
-			return instance;
+	public static Connection getConnection() {
+		
+		if(ds==null){
+			try{
+				ds=DataSources.pooledDataSource(DataSources.unpooledDataSource(jdbcUrl));
+			} catch(SQLException e){
+				e.printStackTrace();
+				System.exit(1);
+			}
 		}
-	}
-
-	public Connection getConnection() {
 		try {
 			
-			Connection conn = DriverManager.getConnection(jdbcUrl);
+			Connection conn = ds.getConnection();
 			return conn;
 			
 		} catch (SQLException e) {
