@@ -45,7 +45,7 @@
                            </VBox.margin></ComboBox>
                      </children>
                   </VBox>
-                  <Button fx:id="btnCalcolaPercorso" mnemonicParsing="false" onAction="#doCalcolaPercorso" prefHeight="31.0" prefWidth="144.0" text="Calcola percorso">
+                  <Button mnemonicParsing="false" onAction="#doCalcolaPercorso" prefHeight="31.0" prefWidth="144.0" text="Calcola percorso">
                      <HBox.margin>
                         <Insets left="90.0" />
                      </HBox.margin></Button>
