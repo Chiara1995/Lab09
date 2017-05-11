@@ -1,10 +1,7 @@
 package it.polito.tdp.metrodeparis.model;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
-
 import org.jgrapht.GraphPath;
 import org.jgrapht.Graphs;
 import org.jgrapht.UndirectedGraph;
@@ -61,12 +58,15 @@ public class Model {
 		return listVertex;
 	}
 	
-	public double getTempoPercorrenza(Fermata partenza, Fermata destinazione){
+	public String getTempoPercorrenza(Fermata partenza, Fermata destinazione){
 		UndirectedGraph<Fermata,DefaultWeightedEdge> g=this.getGrafo();
 		DijkstraShortestPath<Fermata, DefaultWeightedEdge> dsp=new DijkstraShortestPath<Fermata, DefaultWeightedEdge>(g, partenza, destinazione);
 		GraphPath<Fermata,DefaultWeightedEdge> percorso=dsp.getPath();
 		double tempo=percorso.getWeight()+(30/3600)*(this.getCamminoMinimo(partenza, destinazione).size());
-		return tempo;
+		double ora=tempo%1;
+		double minuti=(tempo-(int)ora)*60;
+		double secondi=(minuti-(int)minuti)*60;
+		return String.format("%d:%d:%d", (int)ora, (int)minuti, (int)secondi);
 	}
 		
 }

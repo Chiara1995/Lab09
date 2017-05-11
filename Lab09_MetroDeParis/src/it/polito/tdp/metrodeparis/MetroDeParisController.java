@@ -59,8 +59,7 @@ public class MetroDeParisController {
     		return;
     	}
     	txtResult.setText("Percorso: "+result.toString()+"\n");
-    	double tempo=model.getTempoPercorrenza(stazionePartenza, stazioneArrivo);
-    	txtResult.appendText("Tempo di percorrenza stimato: "+String.valueOf(tempo));
+    	txtResult.appendText("Tempo di percorrenza stimato: "+model.getTempoPercorrenza(stazionePartenza, stazioneArrivo));
     	return;
     }
 
